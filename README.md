@@ -36,11 +36,11 @@ Fifth Unreal Project to understand topics:
     4.  Chase (MoveToActor)
     5.  Blackboard
     6.  Behavior Trees
-        1.  Selector
-        2.  Sequence
-        3.  Tasks
-        4.  Decorators
-        5.  Services
+         1.  Selector
+         2.  Sequence
+         3.  Tasks
+         4.  Decorators
+         5.  Services
 12. Create and Update Widget Instance from code
 13. Sound:
     1.  SpawnSoundAttached
