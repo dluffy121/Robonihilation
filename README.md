@@ -1,4 +1,35 @@
-Fifth Unreal Project to understand topics:
+# Robonihilation (Unreal Engine 5)(C++)
+
+An Unreal Engine third-person shooter game, where the player is deployed on an arctic research station to annihilate the robots gone rogue. Various features of Unreal Engine in the form of C++ and blueprint system was utilized to make character movements, animations, combat, health system, AI, etc.
+
+## Hightlights
+1. Character Movement
+   Handling input by overriding ACharacter::SetupPlayerInputComponent and binding actions and axes to perform intended behaviour
+   Leveraging Animation blueprint's Eventgraphs and AnimGraph to make use of blend space animations for aiming and locomotion
+   
+2. Character Combat
+   Shooting, Sockets, Particle System, Bone Hiding
+   
+3. Character AI
+   Nav Mesh
+    2.  LineOfSight
+    3.  Focusing (SetFocus)
+    4.  Chase (MoveToActor)
+    5.  Blackboard
+    6.  Behavior Trees
+         1.  Selector
+         2.  Sequence
+         3.  Tasks
+         4.  Decorators
+         5.  Services
+
+4. Sound
+   SpawnSoundAttached, SoundCue, Spacialization
+   
+5. Widget
+   Updating from code as per conditions
+
+## Summary
 1. Character setup
    1. Movement Control
    2. Input based Implementation
@@ -27,23 +58,6 @@ Fifth Unreal Project to understand topics:
 10. Vector Mathematics:
     1. Inverse Transform Vector
     2. Inverse Transform Direction
-11. AI Controller:
-    1.  Nav Mesh
-    2.  LineOfSight
-    3.  Focusing (SetFocus)
-    4.  Chase (MoveToActor)
-    5.  Blackboard
-    6.  Behavior Trees
-         1.  Selector
-         2.  Sequence
-         3.  Tasks
-         4.  Decorators
-         5.  Services
-12. Create and Update Widget Instance from code
-13. Sound:
-    1.  SpawnSoundAttached
-    2.  SoundCue
-    3.  Spacialization
 
 ## Dependencies
 1. Shooter Asset Pack: available only via course link
