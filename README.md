@@ -11,7 +11,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    Different character states like grounded, airborne, jumping, etc are defined and linked with each other using transitions to from **animation state machines**.
    Transitions happen between these states depending on conditions and animations are played accordingly.
    
-   ![asm4](https://user-images.githubusercontent.com/43366313/201526752-b41ae8c7-6e3e-42b8-8cfe-4aee4b8ae3e7.png)<br>*Locomotion State Machine*
+   ![LocomotionStateMachine](https://user-images.githubusercontent.com/43366313/201526752-b41ae8c7-6e3e-42b8-8cfe-4aee4b8ae3e7.png)<br>*Locomotion State Machine*
    
    **Blend spaces** are used to blend between multiple animations depending upon some parameters like Locomotion blend space helps with leg movement done in different directions.<br>
    
@@ -33,6 +33,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    ![Shooting](https://user-images.githubusercontent.com/43366313/201525881-bb52a4e4-9c8d-4e94-a8ef-b854735c7008.gif)<br>*Shooting*
    
    Paticles are triggered from gun muzzle when bullet is fired and also when the bullet hits a surface. Different particles are triggered when hitting pawns.
+   Spawning of particles happens with the help of **UWorld::SpawnEmitterAtLocation** and **UWorld::SpawnEmitterAttached**
    
    ![Shooting_Particles](https://user-images.githubusercontent.com/43366313/201525884-ffb14810-1eb3-45f0-9358-1290f53943f3.gif)<br>*Shooting Particles*
 
@@ -50,13 +51,23 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    **AAIController** class is derived to use functionality like **LineOfSight**.
    **Custom Tasks** to clear blackboard values (BTTask_ClearBlackboardValue), shoot (BTTask_Shoot), along with **custom services** like updating player location (BTService_PlayerLocation, BTService_PlayerLocationIfSeen), alerting (BTService_Alert) are created to provide specific behaviors.
 
-   ![image](https://user-images.githubusercontent.com/43366313/201524573-37420bed-af28-4256-bd24-2ac634aafd0e.png)<br>*Behavior Tree*
-
-4. Sound
-   SpawnSoundAttached, SoundCue, Spacialization
+   ![EnemyBehaviorTree](https://user-images.githubusercontent.com/43366313/201524573-37420bed-af28-4256-bd24-2ac634aafd0e.png)<br>*Enemy Behavior Tree*
    
-5. Widget
-   Updating from code as per conditions
+   As per this behavior tree AI is able to patrol, get alerted, follow player, shoot player and search for player in it's last seen position.
+
+### Sound
+   
+   Sound Effects are played when bullet is fired from gun muzzle by using **UWorld::SpawnSoundAttached** and when bullet hits a surface using **UWorld::PlaySoundAtLocation**.<br>
+   Randomization of sound effects is done by creating **SoundCue** assets, for example bullet sfx.
+   
+   ![SoundCue](https://user-images.githubusercontent.com/43366313/201528209-64e6c3be-cd18-4a7e-8600-7cdfc2075e08.png)<br>*Bullet Hit Sound Cue*
+
+   In order to give spatial effect to sounds an **Attenuation** asset is configured and used with those sounds.
+   Environment ambient sound is played by adding an **ambient sound actor** to the map.
+   
+### UI
+   
+   UI Widgets in the form of HUD and screens are created to provide information of health, lose or win states.
 
 ## Summary
 1. Character setup
