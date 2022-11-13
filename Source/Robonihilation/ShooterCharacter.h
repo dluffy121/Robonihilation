@@ -54,6 +54,9 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 		FName GunSocketName;
 
+	UPROPERTY(VisibleAnywhere)
+		bool OnAlert;
+
 	// Health
 	UPROPERTY(EditDefaultsOnly)
 		float MaxHealth = 100;
