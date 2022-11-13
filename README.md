@@ -67,24 +67,50 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    
 ### UI
    
-   UI Widgets in the form of HUD and screens are created to provide information of health, lose or win states.
+   UI Widgets in the form of HUD and screens are created to provide information of health, lose or win states. Depending on the win condition the game end screen widget is created and updated from the code, by setting its text and colors.
+   ```cpp
+   UUserWidget* gameEndScreen = CreateWidget(this, GameEndScreenClass, TEXT("Win Screen UI"));
 
-## Summary
-1. Character setup
-   1. Movement Control
-   2. Input based Implementation
-   3. Aiming
-   4. Syncing Animation and movement params
-2. Animation Blueprint
-   1. Animation State machines
-   2. Blend Space
-3. Gun Setup
-4. Dynamic Actor Spawning
-5. Mesh Sockets and Attaching
-6. Mesh Bone Hiding
-7. Particle System Spawning
-   1. UGameplayStatics::SpawnEmitterAtLocation
-   2. UGameplayStatics::SpawnEmitterAttached
+   if (!gameEndScreen) return;
+
+   UTextBlock* mainText = Cast<UTextBlock>(gameEndScreen->GetWidgetFromName(TEXT("MainText")));
+   UTextBlock* secondaryText = Cast<UTextBlock>(gameEndScreen->GetWidgetFromName(TEXT("SecondaryText")));
+
+   if (bIsWinner)
+   {
+       if (mainText)
+       {
+           mainText->SetText(WinMainText);
+           mainText->SetColorAndOpacity(WinColor);
+       }
+       if (secondaryText)
+       {
+           secondaryText->SetText(WinSecondaryText);
+           secondaryText->SetColorAndOpacity(WinColor);
+       }
+   }
+   else
+   {
+       if (mainText)
+       {
+           mainText->SetText(LossMainText);
+           mainText->SetColorAndOpacity(LossColor);
+       }
+       if (secondaryText)
+       {
+           secondaryText->SetText(LossSecondaryText);
+           secondaryText->SetColorAndOpacity(LossColor);
+       }
+   }
+
+   gameEndScreen->AddToViewport();
+   ```
+
+## Additional Implementation
+
+1. Syncing Animation and movement params
+2. Mesh Sockets and Attaching
+3. Mesh Bone Hiding
 8. Blueprint Pure
 9. Methods:
    1. PlayerController::GetPlayerViewpoint
