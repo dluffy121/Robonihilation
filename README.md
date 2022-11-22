@@ -2,9 +2,16 @@
 
 An Unreal Engine third-person shooter game, where the player is deployed on an arctic research station to annihilate the robots gone rogue. Various features of Unreal Engine in the form of C++ and blueprint system was utilized to make character movements, animations, combat, health system, AI, etc.
 
-## Hightlights
+## Highlights
++ [Character Movement](#character-movement)
++ [Character Combat](#character-combat)
++ [Character AI](#character-ai)
++ [Sound](#sound)
++ [UI](#ui)
++ [Additional Implementation](#additional-implementation)
++ [Dependencies](#dependencies)
 
-### Character Movement
+## **Character Movement**
 
    Input is handled by overriding **ACharacter::SetupPlayerInputComponent** and binding actions and axes to perform intended behaviour.<br>
    Leveraging Animation blueprint's **Eventgraph** and **AnimGraph** to make use of blend space animations for aiming and locomotion.<br>
@@ -25,7 +32,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    
    ![Walking](https://user-images.githubusercontent.com/43366313/201527353-0ff44dfb-a754-4aa0-a11d-23f4cbbd4ab6.gif)<br>*Walking*
 
-### Character Combat
+## **Character Combat**
 
    Combat happens in the form of shooting fake bullets, which follow the ray trace from gun to the forward direction of the player camera.
    Unreal Engine's damage system is utilized to inflict damage to player or enemy pawns, **APawn::TakeDamage** method is overriden to achieve this and is called on the pawn when bullet hits.
@@ -37,7 +44,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    
    ![Shooting_Particles](https://user-images.githubusercontent.com/43366313/201525884-ffb14810-1eb3-45f0-9358-1290f53943f3.gif)<br>*Shooting Particles*
 
-### Character AI
+## **Character AI**
 
    Enemy AI is setup by creating **behavior trees** and **blackboards**.<br>
    Pathfinding is done by creating a **Navmesh Volume**, which helps bake walking areas for the AI.
@@ -55,7 +62,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    
    As per this behavior tree AI is able to patrol, get alerted, follow player, shoot player and search for player in it's last seen position.
 
-### Sound
+## **Sound**
    
    Sound Effects are played when bullet is fired from gun muzzle by using **UWorld::SpawnSoundAttached** and when bullet hits a surface using **UWorld::PlaySoundAtLocation**.<br>
    Randomization of sound effects is done by creating **SoundCue** assets, for example bullet sfx.
@@ -65,7 +72,7 @@ An Unreal Engine third-person shooter game, where the player is deployed on an a
    In order to give spatial effect to sounds an **Attenuation** asset is configured and used with those sounds.
    Environment ambient sound is played by adding an **ambient sound actor** to the map.
    
-### UI
+## **UI**
    
    UI Widgets in the form of HUD and screens are created to provide information of health, lose or win states. Depending on the win condition the game end screen widget is created and updated from the code, by setting its text and colors.
    ```cpp
